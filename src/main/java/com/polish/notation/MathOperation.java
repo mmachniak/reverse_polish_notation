@@ -27,6 +27,15 @@ public enum MathOperation {
         return mathOperationMap.get(operation).get(0);
     }
 
+    static boolean isMathOperator(String operator) {
+        try {
+            MathOperation.of(operator);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
+
     MathOperation(String operation, BinaryOperator<BigDecimal> mathEvaluator) {
         this.operation = operation;
         this.mathEvaluator = mathEvaluator;

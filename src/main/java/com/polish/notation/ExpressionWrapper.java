@@ -24,7 +24,7 @@ class ExpressionWrapper implements Iterable<String> {
     }
 
     private void validateElement(String element) {
-        if (!isNumeric(element) && !isMathOperator(element)) {
+        if (!isNumeric(element) && !MathOperation.isMathOperator(element)) {
             throwIllegalArgumentException();
         }
     }
@@ -40,15 +40,6 @@ class ExpressionWrapper implements Iterable<String> {
             return false;
         }
         return true;
-    }
-
-    private boolean isMathOperator(String operator) {
-        try {
-            MathOperation.of(operator);
-            return true;
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
     }
 
     @Override
